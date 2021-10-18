@@ -1,0 +1,23 @@
+###############################
+# docker-compose.yml
+###############################
+version: '3.9'
+services:
+  # Local dev blockhain node
+  playground-network:
+    image: ghcr.io/chrisnft/sandbox-network:latest
+    container_name: playground-network
+    ports:
+      - "8545"
+
+  # Sandbox environment for development 
+  # and network connection to local blockchain node 
+  app:
+    image: ghcr.io/chrisnft/sandbox:latest
+    container_name: playground-client
+    working_dir: /home/sandbox/playground
+    stdin_open: true
+    tty: true
+
+volumes:
+  playground:
